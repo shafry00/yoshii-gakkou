@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yoshii Gakkou - Belajar Bahasa Jepang, Wujudkan Mimpi ke Jepang</title>
   <meta name="description" content="Yoshii Gakkou adalah lembaga kursus bahasa Jepang terbaik di Solo Raya. Kami siap menjadi jembatan untuk karier profesional Anda di Jepang.">
+  <link rel="icon" href="https://yoshii-gakkou-asset.shafryyusuf.workers.dev/logo.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -47,7 +48,6 @@
       padding: 0 24px;
     }
 
-    /* Header */
     header {
       position: fixed;
       top: 0;
@@ -76,16 +76,15 @@
       gap: 8px;
     }
 
-    .logo-mark {
+    .logo-img {
       width: 36px;
       height: 36px;
-      background: var(--color-accent);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      font-weight: 700;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .logo-text {
+      font-family: var(--font-display);
     }
 
     nav {
@@ -142,7 +141,6 @@
       color: white;
     }
 
-    /* Hero */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -244,7 +242,6 @@
       font-weight: 700;
     }
 
-    /* Stats */
     .stats {
       padding: 48px 0;
       background: var(--color-bg-alt);
@@ -275,7 +272,6 @@
       color: var(--color-text-muted);
     }
 
-    /* Section */
     section {
       padding: 96px 0;
     }
@@ -297,7 +293,6 @@
       font-size: 1.0625rem;
     }
 
-    /* Programs */
     .programs-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -362,7 +357,6 @@
       font-weight: 600;
     }
 
-    /* Why Us */
     .why-us {
       background: var(--color-bg-alt);
     }
@@ -403,7 +397,6 @@
       color: var(--color-text-muted);
     }
 
-    /* Services */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -434,7 +427,6 @@
       color: var(--color-text-muted);
     }
 
-    /* CTA */
     .cta {
       background: var(--color-text);
       color: white;
@@ -473,7 +465,6 @@
       color: var(--color-text);
     }
 
-    /* Footer */
     footer {
       background: var(--color-bg-alt);
       padding: 64px 0 32px;
@@ -542,7 +533,6 @@
       text-decoration: none;
     }
 
-    /* Mobile */
     @media (max-width: 768px) {
       nav { display: none; }
       
@@ -590,8 +580,8 @@
   <header>
     <div class="container header-inner">
       <a href="#" class="logo">
-        <span class="logo-mark">Y</span>
-        Yoshii Gakkou
+        <img src="https://yoshii-gakkou-asset.shafryyusuf.workers.dev/logo.jpg" alt="Yoshii Gakkou" class="logo-img">
+        <span class="logo-text">Yoshii Gakkou</span>
       </a>
       <nav>
         <a href="#program">Program</a>
@@ -653,7 +643,7 @@
     <div class="container">
       <div class="section-header">
         <h2>Program Unggulan</h2>
-        <p>Pilih program yang sesuai dengan目标 Anda — dari dasar hingga persiapan kerja di Jepang</p>
+        <p>Pilih program yang sesuai dengan目標 Anda — dari dasar hingga persiapan kerja di Jepang</p>
       </div>
       <div class="programs-grid">
         <div class="program-card">
@@ -774,8 +764,8 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#" class="logo">
-            <span class="logo-mark">Y</span>
-            Yoshii Gakkou
+            <img src="https://yoshii-gakkou-asset.shafryyusuf.workers.dev/logo.jpg" alt="Yoshii Gakkou" class="logo-img">
+            <span class="logo-text">Yoshii Gakkou</span>
           </a>
           <p>Terbaik untuk belajar bahasa Jepang di Solo Raya. Wujudkan mimpi karier Anda di Jepang.</p>
         </div>
