@@ -3,19 +3,810 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yoshii Gakkou</title>
+  <title>Yoshii Gakkou - Belajar Bahasa Jepang, Wujudkan Mimpi ke Jepang</title>
+  <meta name="description" content="Yoshii Gakkou adalah lembaga kursus bahasa Jepang terbaik di Solo Raya. Kami siap menjadi jembatan untuk karier profesional Anda di Jepang.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: system-ui, -apple-system, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-    .container { text-align: center; color: white; }
-    h1 { font-size: 3rem; margin-bottom: 1rem; }
-    p { font-size: 1.25rem; opacity: 0.9; }
+    :root {
+      --color-bg: #FEFDFB;
+      --color-bg-alt: #F7F4EF;
+      --color-text: #1A1A1A;
+      --color-text-muted: #5C5C5C;
+      --color-accent: #C41E3A;
+      --color-accent-light: #E8D5D5;
+      --color-border: #E5E0D5;
+      --color-white: #FFFFFF;
+      --font-display: 'DM Serif Display', serif;
+      --font-body: 'Outfit', sans-serif;
+      --font-jp: 'Noto Sans JP', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(254, 253, 251, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--color-text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--color-accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    nav a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--color-accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-body);
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #A01830;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--color-text);
+      background: transparent;
+      color: var(--color-text);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-text);
+      color: white;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: var(--color-bg-alt);
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .jp {
+      font-family: var(--font-jp);
+      color: var(--color-accent);
+      display: block;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.1);
+    }
+
+    .hero-image-tag {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--color-white);
+      padding: 16px 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .hero-image-tag span {
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    /* Stats */
+    .stats {
+      padding: 48px 0;
+      background: var(--color-bg-alt);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Section */
+    section {
+      padding: 96px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 64px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      color: var(--color-text-muted);
+      font-size: 1.0625rem;
+    }
+
+    /* Programs */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .program-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      padding: 32px;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .program-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 8px 32px rgba(196, 30, 58, 0.08);
+    }
+
+    .program-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    .program-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .program-card p {
+      color: var(--color-text-muted);
+      font-size: 0.9375rem;
+      margin-bottom: 16px;
+    }
+
+    .program-features {
+      list-style: none;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .program-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      padding: 6px 0;
+      color: var(--color-text-muted);
+    }
+
+    .program-features li::before {
+      content: '✓';
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* Why Us */
+    .why-us {
+      background: var(--color-bg-alt);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 16px;
+    }
+
+    .why-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--color-accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .why-content h4 {
+      font-weight: 600;
+      font-size: 1.0625rem;
+      margin-bottom: 4px;
+    }
+
+    .why-content p {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      padding: 32px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .service-card h4 {
+      font-weight: 600;
+      font-size: 1.0625rem;
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--color-text);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+      font-size: 1.0625rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .cta .btn-primary {
+      background: var(--color-accent);
+    }
+
+    .cta .btn-outline {
+      border-color: white;
+      color: white;
+    }
+
+    .cta .btn-outline:hover {
+      background: white;
+      color: var(--color-text);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--color-bg-alt);
+      padding: 64px 0 32px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      color: var(--color-text-muted);
+      margin-top: 16px;
+      font-size: 0.9375rem;
+      max-width: 280px;
+    }
+
+    .footer-section h5 {
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-section a, .footer-section p {
+      display: block;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      padding: 6px 0;
+    }
+
+    .footer-section a:hover {
+      color: var(--color-accent);
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    .social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--color-white);
+      border-radius: 4px;
+      font-size: 1rem;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      
+      .hero::before {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .programs-grid, .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .footer-brand {
+        grid-column: span 2;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Yoshii Gakkou</h1>
-    <p>Learning Platform</p>
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">Y</span>
+        Yoshii Gakkou
+      </a>
+      <nav>
+        <a href="#program">Program</a>
+        <a href="#keunggulan">Keunggulan</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#kontak" class="btn btn-primary">Hubungi Kami</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <span class="hero-label">Didirikan Mei 2024</span>
+        <h1>
+          Wujudkan Mimpi
+          <span class="jp">日本へ</span>
+          ke Jepang Bersama Yoshii Gakkou
+        </h1>
+        <p>Belajar bahasa Jepang berkualitas dengan metode aplikatif. Kami siapkan Anda untuk karier profesional di Jepang.</p>
+        <div class="hero-cta">
+          <a href="#program" class="btn btn-primary">Lihat Program</a>
+          <a href="#kontak" class="btn btn-outline">Konsultasi Gratis</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://yoshii-gakkou-asset.shafryyusuf.workers.dev/logo.jpg" alt="Yoshii Gakkou">
+        <div class="hero-image-tag">
+          🏫 Seit <span>Mei 2024</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Siswa Aktif</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Lulus JLPT N4</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Siswa Kerja di JP</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Mitra Perusahaan</div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <section id="program">
+    <div class="container">
+      <div class="section-header">
+        <h2>Program Unggulan</h2>
+        <p>Pilih program yang sesuai dengan目标 Anda — dari dasar hingga persiapan kerja di Jepang</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-icon">🌅</div>
+          <h3>Kelas Intensif</h3>
+          <p>Kelas intensif untuk pembelajaran dari nol hingga level N4 dalam waktu singkat.</p>
+          <ul class="program-features">
+            <li>4x pertemuan/minggu</li>
+            <li>Kelas Pagi & Malam</li>
+            <li>Modul pembelajaran</li>
+            <li>Konsultasi不限</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">💼</div>
+          <h3>Program Persiapan Karier</h3>
+          <p>Persiapan lengkap untuk bekerja di Jepang melalui program Magang atau SSW.</p>
+          <ul class="program-features">
+            <li>Kenshu (Magang)</li>
+            <li>Tokutei Ginou (SSW)</li>
+            <li>Fokus JLPT N4 / JFT A2</li>
+            <li>Penyaluran Kerja</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">🎯</div>
+          <h3>Program Khusus</h3>
+          <p>Program designed untuk kebutuhan spesifik dengan target yang jelas.</p>
+          <ul class="program-features">
+            <li>Intensif 4 minggu</li>
+            <li>Weekend class</li>
+            <li>Private lesson</li>
+            <li>Crash course</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="keunggulan" class="why-us">
+    <div class="container">
+      <div class="section-header">
+        <h2>Kenapa Memilih Yoshii Gakkou?</h2>
+        <p>Kami bukan hanya tempat belajar bahasa, tapi Partner Anda menuju Jepang</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon">1</div>
+          <div class="why-content">
+            <h4>Bisa Sambil Bekerja</h4>
+            <p>Kelas malam memungkinkan Anda belajar tanpa mengganggu jam kerja.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">2</div>
+          <div class="why-content">
+            <h4>Garansi Sampai Lulus</h4>
+            <p>Kami dampingi hingga Anda mencapai target JFT A2 atau JLPT N4.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">3</div>
+          <div class="why-content">
+            <h4>Penyaluran Kerja</h4>
+            <p>Tidak hanya belajar, kami bantu proses sampai berangkat ke Jepang.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">4</div>
+          <div class="why-content">
+            <h4>Konsultasi Lengkap</h4>
+            <p>Bantuan administrasi dan konsultasi karier tanpa batas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="layanan">
+    <div class="container">
+      <div class="section-header">
+        <h2>Layanan Tambahan</h2>
+        <p>Solusi lengkap untuk perjalanan dan pekerjaan Anda di Jepang</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📄</div>
+          <h4>Pembuatan Rirekisho</h4>
+          <p>CV format standar perusahaan Jepang untuk melamar kerja.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📝</div>
+          <h4>Translate Dokumen</h4>
+          <p>Terjemahan KK, Akta, Ijazah ke Bahasa Jepang.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎓</div>
+          <h4>Konsultasi Karir</h4>
+          <p>Bimbingan lengkap proses bekerja di Jepang.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="kontak">
+    <div class="container">
+      <h2>Siap Wujudkan Mimpi ke Jepang?</h2>
+      <p>Hubungi kami sekarang untuk konsultasi gratis dan program yang tepat untuk Anda.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/6281226840766" class="btn btn-primary">WhatsApp: 0812-2684-0766</a>
+        <a href="mailto:yoshiigakkou@gmail.com" class="btn btn-outline">Email Kami</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-mark">Y</span>
+            Yoshii Gakkou
+          </a>
+          <p>Terbaik untuk belajar bahasa Jepang di Solo Raya. Wujudkan mimpi karier Anda di Jepang.</p>
+        </div>
+        <div class="footer-section">
+          <h5>Program</h5>
+          <a href="#program">Kelas Intensif</a>
+          <a href="#program">Magang Jepang</a>
+          <a href="#program">Tokutei Ginou</a>
+          <a href="#layanan">Layanan</a>
+        </div>
+        <div class="footer-section">
+          <h5>Kantor</h5>
+          <p>Kelipan Rt.02/Rw.07</p>
+          <p>Gagaksipat, Ngemplak</p>
+          <p>Boyolali (Solo Raya)</p>
+        </div>
+        <div class="footer-section">
+          <h5>Kontak</h5>
+          <a href="https://wa.me/6281226840766">0812-2684-0766</a>
+          <a href="mailto:yoshiigakkou@gmail.com">yoshiigakkou@gmail.com</a>
+          <a href="#">@yoshiigakkou</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Yoshii Gakkou. All rights reserved.</span>
+        <div class="social">
+          <a href="https://instagram.com/yoshiigakkou">📷</a>
+          <a href="https://tiktok.com/@yoshiigakkou">🎵</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
